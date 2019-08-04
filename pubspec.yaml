@@ -22,6 +22,9 @@ dependencies:
   # flutter_auth_firebase: ^0.3.0
   flutter_auth_firebase:
     path: ../flutter_auth_firebase
+  # flutter_auth_firebase_google: ^0.3.0
+  flutter_auth_firebase_google:
+    path: ../flutter_auth_firebase_google
 
 dev_dependencies:
   flutter_test:
