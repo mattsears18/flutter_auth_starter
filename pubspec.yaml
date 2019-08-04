@@ -2,7 +2,7 @@ name: flutter_auth_starter
 description: A new Flutter project.
 
 environment:
-  sdk: ">=1.23.0 <3.0.0"
+  sdk: '>=1.23.0 <3.0.0'
 
 dependencies:
   flutter:
@@ -12,23 +12,22 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   flutter_auth_base: ^0.3.1
-  flutter_platform_widgets: "^0.3.1"
-  scoped_model: "^0.3.0"
-  async_loader: "^0.1.2"
+  flutter_platform_widgets: ^0.3.1
+  scoped_model: ^0.3.0
+  async_loader: ^0.1.2
   font_awesome_flutter: 8.0.1
-  url_launcher: "^3.0.3"
+  url_launcher: ^3.0.3
+  crypto: ^2.0.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -38,13 +37,10 @@ flutter:
     - assets/icons/appIcon.jpg
     - assets/icons/transparent.png
     - assets/icons/profileIcon.png
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.io/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
@@ -62,5 +58,5 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
-  # For details regarding fonts from package dependencies, 
+  # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
