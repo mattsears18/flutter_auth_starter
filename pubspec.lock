@@ -57,6 +57,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2"
+  firebase_auth:
+    dependency: transitive
+    description:
+      name: firebase_auth
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.20"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -69,6 +76,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.1"
+  flutter_auth_firebase:
+    dependency: "direct main"
+    description:
+      path: "../flutter_auth_firebase"
+      relative: true
+    source: path
+    version: "0.4.0"
   flutter_platform_widgets:
     dependency: "direct main"
     description:
