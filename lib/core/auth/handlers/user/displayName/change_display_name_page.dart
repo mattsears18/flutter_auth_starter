@@ -1,100 +1,102 @@
-import 'dart:async';
-import 'package:flutter/material.dart';
-import 'package:flutter_auth_base/flutter_auth_base.dart';
-import 'package:scoped_model/scoped_model.dart';
-import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+//TODO
 
-import 'change_display_name_view_model.dart';
-import '../../../../widgets/form_progress_actionable_state.dart';
-import '../../../../app_model.dart';
-import '../../../../widgets/modalAppBar.dart';
+// import 'dart:async';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_auth_base/flutter_auth_base.dart';
+// import 'package:scoped_model/scoped_model.dart';
+// import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
-class ChangeDisplayName extends StatefulWidget {
-  ChangeDisplayName({this.displayName});
+// import 'change_display_name_view_model.dart';
+// import '../../../../widgets/form_progress_actionable_state.dart';
+// import '../../../../app_model.dart';
+// import '../../../../widgets/modalAppBar.dart';
 
-  final String displayName;
-  //final AuthService authService;
+// class ChangeDisplayName extends StatefulWidget {
+//   ChangeDisplayName({this.displayName});
 
-  @override
-  createState() => new ChangeDisplayNameState();
-}
+//   final String displayName;
+//   //final AuthService authService;
 
-class ChangeDisplayNameState
-    extends FormProgressActionableState<ChangeDisplayName> {
-  @override
-  void initState() {
-    super.initState();
+//   @override
+//   createState() => new ChangeDisplayNameState();
+// }
 
-    _viewModel = new ViewModel(displayName: widget.displayName);
-  }
+// class ChangeDisplayNameState
+//     extends FormProgressActionableState<ChangeDisplayName> {
+//   @override
+//   void initState() {
+//     super.initState();
 
-  ViewModel _viewModel;
+//     _viewModel = new ViewModel(displayName: widget.displayName);
+//   }
 
-  Future _setDisplayName(AuthService authService) async {
-    _viewModel.validateAll();
-    await authService.setUserDisplayName(_viewModel.displayName);
+//   ViewModel _viewModel;
 
-    Navigator.pop(context);
-  }
+//   Future _setDisplayName(AuthService authService) async {
+//     _viewModel.validateAll();
+//     await authService.setUserDisplayName(_viewModel.displayName);
 
-  Widget _displayNameField() {
-    return ListTile(
-      leading: Icon(
-        Icons.person,
-      ),
-      title: TextFormField(
-          initialValue: _viewModel.displayName,
-          decoration: new InputDecoration(labelText: 'Display Name'),
-          validator: _viewModel.validateDisplayName,
-          onSaved: (val) => _viewModel.displayName = val),
-    );
-  }
+//     Navigator.pop(context);
+//   }
 
-  Widget _progressIndicator() {
-    return super.showProgress
-        ? Padding(
-            padding: EdgeInsets.all(16.0),
-            child: PlatformCircularProgressIndicator())
-        : Container();
-  }
+//   Widget _displayNameField() {
+//     return ListTile(
+//       leading: Icon(
+//         Icons.person,
+//       ),
+//       title: TextFormField(
+//           initialValue: _viewModel.displayName,
+//           decoration: new InputDecoration(labelText: 'Display Name'),
+//           validator: _viewModel.validateDisplayName,
+//           onSaved: (val) => _viewModel.displayName = val),
+//     );
+//   }
 
-  Widget _build() {
-    return SingleChildScrollView(
-        child: Column(children: <Widget>[
-      _displayNameField(),
-      _progressIndicator(),
-    ]));
-  }
+//   Widget _progressIndicator() {
+//     return super.showProgress
+//         ? Padding(
+//             padding: EdgeInsets.all(16.0),
+//             child: PlatformCircularProgressIndicator())
+//         : Container();
+//   }
 
-  Form _asForm(Widget widget) {
-    return Form(autovalidate: true, key: super.formKey, child: widget);
-  }
+//   Widget _build() {
+//     return SingleChildScrollView(
+//         child: Column(children: <Widget>[
+//       _displayNameField(),
+//       _progressIndicator(),
+//     ]));
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return ScopedModelDescendant<AppModel>(
-      rebuildOnChange: false,
-      builder: (_, child, model) => PlatformScaffold(
-            appBar: ModalAppBar(
-              title: Text('Change Display Name'),
-              acceptAction: super.showProgress
-                  ? null
-                  : () => super.validateAndSubmit(
-                        (_) async => await _setDisplayName(model.authService),
-                      ),
-              closeAction:
-                  super.showProgress ? null : () => Navigator.maybePop(context),
-            ),
-            body: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Material(
-                color: isMaterial ? null : Theme.of(context).cardColor,
-                child: _asForm(
-                  _build(),
-                ),
-              ),
-            ),
-          ),
-    );
-  }
-}
+//   Form _asForm(Widget widget) {
+//     return Form(autovalidate: true, key: super.formKey, child: widget);
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return ScopedModelDescendant<AppModel>(
+//       rebuildOnChange: false,
+//       builder: (_, child, model) => PlatformScaffold(
+//             appBar: ModalAppBar(
+//               title: Text('Change Display Name'),
+//               acceptAction: super.showProgress
+//                   ? null
+//                   : () => super.validateAndSubmit(
+//                         (_) async => await _setDisplayName(model.authService),
+//                       ),
+//               closeAction:
+//                   super.showProgress ? null : () => Navigator.maybePop(context),
+//             ),
+//             body: Padding(
+//               padding: const EdgeInsets.symmetric(horizontal: 16.0),
+//               child: Material(
+//                 color: isMaterial ? null : Theme.of(context).cardColor,
+//                 child: _asForm(
+//                   _build(),
+//                 ),
+//               ),
+//             ),
+//           ),
+//     );
+//   }
+// }

@@ -1,8 +1,8 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_auth_base/flutter_auth_base.dart';
 import 'package:meta/meta.dart';
-import 'package:scoped_model/scoped_model.dart';
 
 import 'app_info.dart';
 
@@ -14,7 +14,7 @@ class AuthUserState {
   bool get isValidUser => user != null && user.isValid;
 }
 
-class AppModel extends Model {
+class AppModel extends ChangeNotifier {
   AppModel({@required this.authService, @required this.appInfo});
 
   AuthUser _user;

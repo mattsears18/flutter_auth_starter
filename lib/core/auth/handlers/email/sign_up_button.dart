@@ -1,26 +1,28 @@
-import 'package:flutter/material.dart';
-import 'signUp/sign_up_page.dart';
+//TODO
 
-void signUp(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (_) => SignUpPassword()));
-}
+// import 'package:flutter/material.dart';
+// import 'signUp/sign_up_page.dart';
 
-class SignUpButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var theme = Theme.of(context);
+// void signUp(BuildContext context) {
+//   Navigator.push(context, MaterialPageRoute(builder: (_) => SignUpPassword()));
+// }
 
-    return Column(children: <Widget>[
-      Padding(
-        padding: EdgeInsets.symmetric(vertical: 8.0),
-        child: Text("Not registered?",
-            style: TextStyle(color: theme.textTheme.body1.color)),
-      ),
-      OutlineButton(
-          padding: EdgeInsets.symmetric(horizontal: 32.0),
-          textColor: theme.primaryColor,
-          onPressed: () => signUp(context),
-          child: Text("Sign Up"))
-    ]);
-  }
-}
+// class SignUpButton extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     var theme = Theme.of(context);
+
+//     return Column(children: <Widget>[
+//       Padding(
+//         padding: EdgeInsets.symmetric(vertical: 8.0),
+//         child: Text("Not registered?",
+//             style: TextStyle(color: theme.textTheme.body1.color)),
+//       ),
+//       OutlineButton(
+//           padding: EdgeInsets.symmetric(horizontal: 32.0),
+//           textColor: theme.primaryColor,
+//           onPressed: () => signUp(context),
+//           child: Text("Sign Up"))
+//     ]);
+//   }
+// }

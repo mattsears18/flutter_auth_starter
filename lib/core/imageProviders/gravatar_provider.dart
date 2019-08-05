@@ -86,7 +86,7 @@ class GravatarProvider extends PhotoUrlProvider {
 
       var resp = await req.close();
 
-      return resp.statusCode == HttpStatus.OK;
+      return resp.statusCode == HttpStatus.ok;
     } finally {
       httpClient.close();
     }

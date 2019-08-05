@@ -7,7 +7,8 @@ import 'src/pages/home_page.dart';
 Map<String, WidgetBuilder> buildRoutes(AuthService authService) {
   var routes = new Map<String, WidgetBuilder>();
 
-  routes['/home'] = (BuildContext context) => new HomePage();
+  //TODO
+  // routes['/home'] = (BuildContext context) => new HomePage();
 
   return routes;
 }

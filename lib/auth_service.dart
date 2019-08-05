@@ -1,6 +1,6 @@
 import 'package:flutter_auth_base/flutter_auth_base.dart';
 import 'package:flutter_auth_firebase/flutter_auth_firebase.dart';
-import 'package:flutter_auth_firebase_google/flutter_auth_firebase_google.dart';
+// import 'package:flutter_auth_firebase_google/flutter_auth_firebase_google.dart';
 
 import 'core/auth/mock/mock_service.dart';
 
@@ -29,6 +29,11 @@ AuthService createFirebaseAuthService() {
     new FirebaseEmailProvider(service: authService),
     // new FirebaseGoogleProvider(service: authService)
   ]);
+
+  authService.preAuthPhotoProvider = GravatarProvider();
+  authService.postAuthPhotoProvider = CombinedPhotoProvider()
+    ..add(AuthUserImageProvider(service: authService))
+    ..add(GravatarProvider(missingImageType: ImageType.MysteryMan));
 
   return authService;
 }
