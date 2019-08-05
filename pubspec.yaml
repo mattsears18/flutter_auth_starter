@@ -19,7 +19,7 @@ dependencies:
   font_awesome_flutter: 8.0.1
   url_launcher: ^3.0.3
   crypto: ^2.0.6
-  # flutter_auth_firebase: ^0.3.0
+  # flutter_auth_firebase: ^0.4.0
   flutter_auth_firebase:
     path: ../flutter_auth_firebase
   # flutter_auth_firebase_google: ^0.3.0

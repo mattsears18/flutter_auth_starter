@@ -20,7 +20,8 @@ void main() {
       privacyPolicyUrl: "http://yourPrivacyPolicyUrl",
       termsOfServiceUrl: "http://yourTermsOfServiceUrl");
 
-  var authService = auth.createMockedAuthService();
+  // var authService = auth.createMockedAuthService();
+  var authService = auth.createFirebaseAuthService();
 
   var app = ScopedModel<AppModel>(
       model: AppModel(appInfo: appInfo, authService: authService),
