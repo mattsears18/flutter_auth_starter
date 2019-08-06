@@ -20,7 +20,7 @@ AuthService createMockedAuthService() {
 }
 
 AuthService createFirebaseAuthService() {
-  var authService = new FirebaseAuthService();
+  var authService = FirebaseAuthService();
   authService.authProviders.addAll([
     new FirebaseEmailProvider(service: authService),
     // new FirebaseGoogleProvider(service: authService)

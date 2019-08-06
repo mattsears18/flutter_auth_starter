@@ -1,10 +1,9 @@
-// TODO
-
 import 'dart:async';
 
 import 'package:async_loader/async_loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_base/flutter_auth_base.dart';
+import 'package:flutter_auth_starter/src/pages/home_page.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
@@ -71,7 +70,7 @@ class SplashPageState extends ProgressActionableState<SplashPage> {
     if (state == LoginState.LoginRequired) {
       return _buttons(appInfo, authService);
     } else if (state == LoginState.LoginSuccessful) {
-      //_navigateToHome();
+      // _navigateToHome();
     }
     return Container();
   }
@@ -125,9 +124,7 @@ class SplashPageState extends ProgressActionableState<SplashPage> {
       widgets.add(
         Padding(
           padding: EdgeInsets.symmetric(vertical: 8.0),
-          // TODO
-          // child: email.SignInButton(),
-          child: PlatformText('email signInButton'),
+          child: email.SignInButton(),
         ),
       );
     }
@@ -156,9 +153,7 @@ class SplashPageState extends ProgressActionableState<SplashPage> {
       widgets.add(
         Padding(
           padding: EdgeInsets.symmetric(vertical: 8.0),
-          // TODO
-          // child: email.SignUpButton(),
-          child: PlatformText('email signUpButton'),
+          child: email.SignUpButton(),
         ),
       );
     }
@@ -167,13 +162,11 @@ class SplashPageState extends ProgressActionableState<SplashPage> {
   }
 
   Future<bool> _handleAcceptanceRequired() async {
-    // TODO
-    return true;
-    // var accepted = await openDialog<bool>(
-    //   context: context,
-    //   builder: (_) => TermsAcceptModal(),
-    // );
-    // return accepted;
+    var accepted = await openDialog<bool>(
+      context: context,
+      builder: (_) => TermsAcceptModal(),
+    );
+    return accepted;
   }
 
   Widget _withProgress(Widget child) {
@@ -245,6 +238,11 @@ class SplashPageState extends ProgressActionableState<SplashPage> {
   Widget build(BuildContext context) {
     return Consumer<AppModel>(
       builder: (_, appModel, child) {
+        if (appModel.user != null && appModel.user.isValid) {
+          print('valid user');
+        } else {
+          print('invalid user');
+        }
         //var theme = Theme.of(context);
         Color bgColor = Colors.white;
         Color fgColor = Colors.black87;
@@ -259,3 +257,213 @@ class SplashPageState extends ProgressActionableState<SplashPage> {
     );
   }
 }
+
+///////////////////
+///////////////////
+///////////////////
+
+// class LandingPage extends StatefulWidget {
+//   @override
+//   LandingPageState createState() => LandingPageState();
+// }
+
+// class LandingPageState extends State<LandingPage> {
+//   @override
+//   initState() {
+//     super.initState();
+
+//     textControlller = TextEditingController(text: 'text');
+//   }
+
+//   bool switchValue = false;
+//   double sliderValue = 0.5;
+
+//   TextEditingController textControlller;
+
+//   _switchPlatform(BuildContext context) {
+//     if (isMaterial) {
+//       PlatformProvider.of(context).changeToCupertinoPlatform();
+//     } else {
+//       PlatformProvider.of(context).changeToMaterialPlatform();
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return PlatformScaffold(
+//       iosContentPadding: true,
+//       appBar: PlatformAppBar(
+//         title: Text('Flutter Platform Widgets'),
+//       ),
+//       body: SingleChildScrollView(
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.center,
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: <Widget>[
+//             Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Text(
+//                   'Primary concept of this package is to use the same widgets to create iOS (Cupertino) or Android (Material) looking apps rather than needing to discover what widgets to use.'),
+//             ),
+//             Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Text(
+//                   'This approach is best when both iOS and Android apps follow the same design in layout and navigation, but need to look as close to native styling as possible.'),
+//             ),
+//             Divider(),
+//             SectionHeader(title: '1. Change Platform'),
+//             PlatformButton(
+//               child: PlatformText('Switch Platform'),
+//               onPressed: () => _switchPlatform(context),
+//             ),
+//             PlatformWidget(
+//               android: (_) => Text('Currently showing Material'),
+//               ios: (_) => Text('Currently showing Cupertino'),
+//             ),
+//             Text('Scaffold: PlatformScaffold'),
+//             Text('AppBar: PlatformAppBar'),
+//             Divider(),
+//             SectionHeader(title: '2. Basic Widgets'),
+//             PlatformText(
+//               'PlatformText will uppercase for Material only',
+//               textAlign: TextAlign.center,
+//             ),
+//             PlatformButton(
+//               child: PlatformText('PlatformButton'),
+//               onPressed: () {},
+//             ),
+//             PlatformButton(
+//               child: PlatformText('Platform Flat Button'),
+//               onPressed: () {},
+//               androidFlat: (_) => MaterialFlatButtonData(),
+//             ),
+//             Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: PlatformIconButton(
+//                 androidIcon: Icon(Icons.home),
+//                 // iosIcon: Icon(CupertinoIcons.home),
+//                 onPressed: () {},
+//               ),
+//             ),
+//             Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: PlatformSwitch(
+//                 value: switchValue,
+//                 onChanged: (bool value) => setState(() => switchValue = value),
+//               ),
+//             ),
+//             PlatformSlider(
+//               value: sliderValue,
+//               onChanged: (double newValue) {
+//                 setState(() {
+//                   sliderValue = newValue;
+//                 });
+//               },
+//             ),
+//             Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: PlatformTextField(
+//                 controller: textControlller,
+//               ),
+//             ),
+//             Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: PlatformCircularProgressIndicator(),
+//             ),
+//             Divider(),
+//             SectionHeader(title: '3. Dialogs'),
+//             PlatformButton(
+//               child: PlatformText('Show Dialog'),
+//               onPressed: () => _showExampleDialog(),
+//             ),
+//             Divider(),
+//             SectionHeader(title: '4. Navigation'),
+//             PlatformButton(
+//               child: PlatformText('Open Tabbed Page'),
+//               // onPressed: () => _openPage((_) => new TabbedPage()),
+//             ),
+//             Divider(),
+//             SectionHeader(title: '5. Advanced'),
+//             PlatformButton(
+//               child: PlatformText('Page with ListView'),
+//               // onPressed: () => _openPage((_) => new ListViewPage()),
+//             ),
+//             PlatformWidget(
+//               android: (_) => Container(), //this is for iOS only
+//               ios: (_) => PlatformButton(
+//                 child: PlatformText('iOS Page with Colored Header'),
+//                 // onPressed: () => _openPage((_) => new ListViewHeaderPage()),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+
+//   _openPage(WidgetBuilder pageToDisplayBuilder) {
+//     Navigator.push(
+//       context,
+//       platformPageRoute(
+//         builder: pageToDisplayBuilder,
+//       ),
+//     );
+//   }
+
+//   _showExampleDialog() {
+//     showPlatformDialog(
+//       context: context,
+//       builder: (_) => PlatformAlertDialog(
+//         title: Text('Alert'),
+//         content: Text('Some content'),
+//         actions: <Widget>[
+//           PlatformDialogAction(
+//             android: (_) => MaterialDialogActionData(),
+//             ios: (_) => CupertinoDialogActionData(),
+//             child: PlatformText('Cancel'),
+//             onPressed: () => Navigator.pop(context),
+//           ),
+//           PlatformDialogAction(
+//             child: PlatformText('OK'),
+//             onPressed: () => Navigator.pop(context),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+// class SectionHeader extends StatelessWidget {
+//   final String title;
+
+//   const SectionHeader({
+//     @required this.title,
+//     Key key,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.only(bottom: 4.0),
+//       child: Text(
+//         title,
+//         style: TextStyle(fontSize: 18.0),
+//       ),
+//     );
+//   }
+// }
+
+// class Divider extends StatelessWidget {
+//   const Divider({
+//     Key key,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       height: 1.0,
+//       color: new Color(0xff999999),
+//       margin: const EdgeInsets.symmetric(vertical: 12.0),
+//     );
+//   }
+// }

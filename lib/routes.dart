@@ -8,7 +8,7 @@ Map<String, WidgetBuilder> buildRoutes(AuthService authService) {
   var routes = new Map<String, WidgetBuilder>();
 
   //TODO
-  // routes['/home'] = (BuildContext context) => new HomePage();
+  routes['/home'] = (BuildContext context) => new HomePage();
 
   return routes;
 }
